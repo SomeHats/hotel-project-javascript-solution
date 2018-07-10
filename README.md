@@ -1,4 +1,30 @@
-# Hotel Rating Library
+
+## Instructor Notes
+
+Available Scripts
+
+```javascript
+npm test //=> Run mocha tests
+npm run repl //=> Jump into a REPL with classes loaded
+npm start //=> Start Express app
+```
+
+Testing with HTTPie
+
+```shell
+http http://localhost:3000/hotels
+http POST http://localhost:3000/hotels name=Travellodge location=Madrid
+http http://localhost:3000/hotels/travellodge_madrid
+http POST http://localhost:3000/hotels/travellodge_madrid/reviews rating=3 text=Lovely
+
+http http://localhost:3000/hotels/double_tree_dublin
+
+#etc...
+```
+
+***
+
+# Hotel Rating Library Exercise
 
 This exercise is designed to test your TDD and OOP skills, and also to introduce you to some new concepts and techniques. It should also help to consolidate your command line and git skills.
 
