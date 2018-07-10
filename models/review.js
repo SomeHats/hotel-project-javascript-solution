@@ -8,6 +8,15 @@ class Review {
   ratingAsStars() {
     return '⭐️'.repeat(this.rating)
   }
+
+  toJSON() {
+    return {
+      text: this.text,
+      rating: this.rating,
+      date: this.date,
+      ratingAsStars: this.ratingAsStars()
+    }
+  }
 }
 
 module.exports = Review
