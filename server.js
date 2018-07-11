@@ -8,6 +8,8 @@ const Hotel = require('./models/hotel')
 const Review = require('./models/review')
 const HotelCollection = require('./models/hotelCollection')
 
+const port = process.env.PORT || 3000;
+
 //////////////////////
 // Set up Seed Data //
 //////////////////////
@@ -148,4 +150,4 @@ app.post('/hotels/:slug', (req, res) => { res.statusCode = 405 })
 
 
 // RUN SERVER
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
