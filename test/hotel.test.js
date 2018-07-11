@@ -1,6 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 chai.use(require('chai-datetime'));
+sinon = require('sinon')
 
 const Hotel = require('../models/hotel')
 const Review = require('../models/review')
