@@ -1,10 +1,10 @@
 class HotelCollection {
   constructor() {
-    this.hotelsList = []
+    this._hotelsList = []
   }
 
   get hotels() {
-    return this.hotelsList
+    return this._hotelsList
   }
 
   set hotels(hotel) {
@@ -12,18 +12,18 @@ class HotelCollection {
   }
 
   addHotel(hotel) {
-    this.hotelsList.push(hotel)
+    this._hotelsList.push(hotel)
   }
 
   sortedHotels() {
-    return this.hotelsList.sort((a,b)=> {
+    return this._hotelsList.sort((a,b)=> {
       return b.rating() - a.rating()
     })
   }
 
   find(slug) {
     let result;
-    this.hotelsList.forEach(((hotel)=>{
+    this._hotelsList.forEach(((hotel)=>{
       if (hotel.urlSlug() == slug) { result = hotel }
     }))
     return result;
@@ -31,10 +31,10 @@ class HotelCollection {
 
   delete(slug) {
     let result;
-    this.hotelsList.forEach(((hotel, i) => {
+    this._hotelsList.forEach(((hotel, i) => {
       if (hotel.urlSlug() == slug) {
         result = hotel
-        this.hotelsList.splice(i, 1)
+        this._hotelsList.splice(i, 1)
       }
     }))
     return result;

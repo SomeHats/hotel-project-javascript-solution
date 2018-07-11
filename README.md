@@ -13,7 +13,7 @@ Testing with HTTPie
 
 ```shell
 http http://localhost:3000/hotels
-http POST http://localhost:3000/hotels name=Travellodge location=Madrid
+http POST http://localhost:3000/hotels name=Travellodge city=Madrid
 http http://localhost:3000/hotels/travellodge_madrid
 http POST http://localhost:3000/hotels/travellodge_madrid/reviews rating=3 text=Lovely
 

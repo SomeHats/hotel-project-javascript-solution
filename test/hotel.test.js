@@ -6,8 +6,9 @@ const Hotel = require('../models/hotel')
 const Review = require('../models/review')
 
 describe('Hotel', () => {
+  let hotel = new Hotel("Hilton Metropole", "London")
+
   it('instantiates properly', () => {
-    let hotel = new Hotel("Hilton Metropole", "London")
     expect(hotel.name).to.eql("Hilton Metropole")
     expect(hotel.city).to.eql("London")
     expect(hotel.reviews).to.eql([])
@@ -17,12 +18,10 @@ describe('Hotel', () => {
   });
 
   it('exposes a URL slug', ()=> {
-    let hotel = new Hotel("Hilton Metropole", "London")
     expect(hotel.urlSlug()).to.equal("hilton_metropole_london")
   })
 
   it('allows the addition of hotels', ()=> {
-    let hotel = new Hotel("Hilton Metropole", "London")
     let review1 = new Review(5, "Excellent hotel, very clean", "2018-12-17")
     let review2 = new Review(1, "Terrible hotel, smelled of mice", "2018-01-01")
 
@@ -35,3 +34,4 @@ describe('Hotel', () => {
     expect(hotel.ratingAsStars()).to.equal("⭐️⭐️⭐️")
   })
 });
+

@@ -21,9 +21,6 @@ describe('HotelCollection', () => {
   });
 
   it('raises an error if hotels are overwritten', ()=> {
-    // Not quite working. It's hard to test a setter method
-    //   that raises an error, since expect expects a function.
-
     expect(function(){c.hotels = ['some', 'nonsense']}).to.throw("Cannot overwrite hotels array!")
   })
 
