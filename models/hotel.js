@@ -13,10 +13,14 @@ class Hotel {
     if (this.reviews.length == 0) {
       return 0
     }
-    return (
-      this.reviews.reduce((sume, review) => sume + review.rating, 0) /
-      this.reviews.length
-    )
+
+    var total = 0
+    for (var review of this.reviews) {
+      total = total + review.rating
+    }
+
+    var average = total / this.reviews.length
+    return average
   }
 
   ratingAsStars() {
@@ -24,11 +28,9 @@ class Hotel {
   }
 
   urlSlug() {
-    return (
-      this.name.toLowerCase().replace(' ', '_') +
-      '_' +
-      this.city.toLowerCase().replace(' ', '_')
-    )
+    var nameSlug = this.name.toLowerCase().replace(' ', '_')
+    var citySlug = this.city.toLowerCase().replace(' ', '_')
+    return nameSlug + '_' + citySlug
   }
 
   addReview(review) {
@@ -43,7 +45,7 @@ class Hotel {
       rating: this.rating(),
       ratingAsStars: this.ratingAsStars(),
       urlSlug: this.urlSlug(),
-      reviews: this.reviews,
+      reviews: this.reviews
     }
   }
 }
