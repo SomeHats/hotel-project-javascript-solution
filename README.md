@@ -163,7 +163,7 @@ Create a `HotelCollection` class which implements the following interface:
 var hotel1 = new Hotel("Hilton Metropole", "London")
 var hotel2 = new Hotel("Crown Plaza", "Leeds")
 
-c = new HotelCollection
+c = new HotelCollection()
 c.hotels //=> []
 
 c.addHotel(hotel1)
