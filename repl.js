@@ -5,7 +5,7 @@ const HotelCollection = require('./models/hotelCollection')
 let repl = require('repl').start({
   useColors: true,
   terminal: true,
-});
-repl.context.Hotel = Hotel;
-repl.context.Review = Review;
-repl.context.HotelCollection = HotelCollection;
+})
+repl.context.Hotel = Hotel
+repl.context.Review = Review
+repl.context.HotelCollection = HotelCollection

@@ -14,7 +14,7 @@ class Review {
       text: this.text,
       rating: this.rating,
       date: this.date,
-      ratingAsStars: this.ratingAsStars()
+      ratingAsStars: this.ratingAsStars(),
     }
   }
 }

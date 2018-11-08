@@ -1,33 +1,36 @@
 const express = require('express')
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
 const app = express()
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  )
+  next()
 })
 
 const Hotel = require('./models/hotel')
 const Review = require('./models/review')
 const HotelCollection = require('./models/hotelCollection')
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000
 
 //////////////////////
 // Set up Seed Data //
 //////////////////////
 
-const hc = new HotelCollection
+const hc = new HotelCollection()
 
-let hotel1 = new Hotel("Hilton Metropole", "London")
-hotel1.addReview(new Review(5, "Excellent hotel, very clean", "2018-12-17"))
-hotel1.addReview(new Review(1, "Terrible hotel, smelled of mice", "2018-01-01"))
+let hotel1 = new Hotel('Hilton Metropole', 'London')
+hotel1.addReview(new Review(5, 'Excellent hotel, very clean', '2018-12-17'))
+hotel1.addReview(new Review(1, 'Terrible hotel, smelled of mice', '2018-01-01'))
 hc.addHotel(hotel1)
 
-let hotel2 = new Hotel("Double Tree", "Dublin")
+let hotel2 = new Hotel('Double Tree', 'Dublin')
 hc.addHotel(hotel2)
 
 ////////////
@@ -121,11 +124,11 @@ app.get('/hotels/:slug/reviews', (req, res) => {
 })
 
 // CREATE a review
-app.post('/hotels/:slug/reviews', (req, res)=> {
+app.post('/hotels/:slug/reviews', (req, res) => {
   hotel = hc.find(req.params.slug)
   rating = req.body.rating
   text = req.body.text
-  date = (new Date).toString()
+  date = new Date().toString()
 
   review = new Review(rating, text, date)
   hotel.addReview(review)
@@ -136,7 +139,7 @@ app.post('/hotels/:slug/reviews', (req, res)=> {
 })
 
 // UPDATE a review
-app.put('/hotels/:slug/reviews/:reviewId', (req, res)=> {
+app.put('/hotels/:slug/reviews/:reviewId', (req, res) => {
   // TODO: Implement this method.
   res.statusCode = 501
   res.send('Not Implemented')
@@ -150,10 +153,15 @@ app.delete('/hotels/:slug/reviews/:reviewId', (req, res) => {
 })
 
 // Dissalowed Routes
-app.put('/hotels', (req, res) => { res.statusCode = 405 })
-app.delete('/hotels', (req, res) => { res.statusCode = 405 })
-app.post('/hotels/:slug', (req, res) => { res.statusCode = 405 })
-
+app.put('/hotels', (req, res) => {
+  res.statusCode = 405
+})
+app.delete('/hotels', (req, res) => {
+  res.statusCode = 405
+})
+app.post('/hotels/:slug', (req, res) => {
+  res.statusCode = 405
+})
 
 // RUN SERVER
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
